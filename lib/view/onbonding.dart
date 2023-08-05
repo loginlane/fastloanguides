@@ -75,7 +75,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    controller.previousPage(duration: const Duration(seconds: 1), curve: Curves.easeInExpo);
+                    controller.previousPage(duration: const Duration(seconds: 1), curve: Curves.fastLinearToSlowEaseIn);
                   },
                   style: ElevatedButton.styleFrom(
                     primary: AppColor.orangeColor,
@@ -92,7 +92,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      controller.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeInExpo);
+                      controller.nextPage(duration: const Duration(seconds: 1), curve: Curves.fastLinearToSlowEaseIn);
                     });
                   },
                   style: ElevatedButton.styleFrom(

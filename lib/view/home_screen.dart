@@ -1,6 +1,9 @@
 import 'package:fastloanguide/config/appcolor.dart';
 import 'package:fastloanguide/controller/homescreen_controller.dart';
 import 'package:fastloanguide/view/EMI/emicalculator_screen.dart';
+import 'package:fastloanguide/view/aadharloan/loanonaadhar.dart';
+import 'package:fastloanguide/view/applyloan/applyloanstep.dart';
+import 'package:fastloanguide/view/bank/checkbalance.dart';
 import 'package:fastloanguide/view/loanguide_screen.dart';
 import 'package:fastloanguide/view/loannews_screen.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     shrinkWrap: true,
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
-                    children: List.generate(5, (index) {
+                    children: List.generate(6, (index) {
                       return AnimationConfiguration.staggeredGrid(
                           position: index,
                           columnCount: homeScreenController.catogoryList.length,
@@ -54,10 +57,23 @@ class HomeScreen extends StatelessWidget {
                             duration: const Duration(milliseconds: 2000),
                             child: FadeInAnimation(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 7),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 7),
                                 child: GestureDetector(
                                   onTap: () {
-                                   index == 0? Get.to(LoanGuideScreen()): index == 4? Get.to(EMICalcWidget()) :Get.to(const LoanNewsScreen());
+                                    if (index == 0) {
+                                      Get.to(CheckBalance());
+                                    } else if (index == 1) {
+                                      Get.to(LoanGuideScreen());
+                                    } else if (index == 2) {
+                                      Get.to(const LoanNewsScreen());
+                                    } else if (index == 3) {
+                                      Get.to(LoanOnAadhar());
+                                    } else if (index == 4) {
+                                      Get.to(ApplyLoanStep());
+                                    } else if (index == 5) {
+                                      Get.to(EMICalcWidget());
+                                    }
                                   },
                                   child: Container(
                                     width: 200,
@@ -66,7 +82,8 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Image.network(
                                           homeScreenController
